@@ -2,7 +2,6 @@
 
 ## 🚀 Overview  
 A robust Spring Boot REST API backend for managing **courses**, **instructors**, **students**, and **enrollments** in an educational institute. This project uses a clean, multi-layered architecture with strong JPA relationships, consistent response structure, pagination, and global exception handling.  
-> ⚠️ Note: This repository includes only the backend (no frontend/UI).
 
 ---
 
