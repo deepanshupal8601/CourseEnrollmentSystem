@@ -1,61 +1,75 @@
-Course Enrollment System 
-🚀 Overview
-A robust Spring Boot REST API backend to manage courses, instructors, students, and enrollments for an educational institute. This project features multi-layered architecture, clean code, proper database relationships, pagination/sorting support, and centralized error handling.
-Note: This repository includes only the backend (no frontend/UI).
+# 📘 Course Enrollment System
 
-📦 Features
-Spring Boot 3.5.0, Java 21, Maven, PostgreSQL
+## 🚀 Overview  
+A robust Spring Boot REST API backend for managing **courses**, **instructors**, **students**, and **enrollments** in an educational institute. This project uses a clean, multi-layered architecture with strong JPA relationships, consistent response structure, pagination, and global exception handling.  
+> ⚠️ Note: This repository includes only the backend (no frontend/UI).
 
-Multi-layered architecture (Controller → Service → DAO → Repository)
+---
 
-Entities: Course, Student, Instructor, Enrollment with proper JPA relationships
+## 📦 Tech Stack
 
-Full CRUD REST APIs for all entities
+- Java 21  
+- Spring Boot 3.5.0  
+- PostgreSQL  
+- Maven  
+- Lombok (optional)  
+- Postman (for API testing)  
 
-Pagination & sorting endpoints for scalable data handling
+---
 
-Custom endpoints for relationships (e.g., get courses by instructor, get enrolled courses per student)
+## ✅ Features
 
-Consistent JSON response structure (with status, message, data)
+- Full CRUD REST APIs for all entities  
+- Multi-layered architecture: `Controller → Service → DAO → Repository`  
+- JPA Entities with relationships:
+  - `Course`
+  - `Instructor`
+  - `Student`
+  - `Enrollment`
+- Pagination & sorting support  
+- Relationship endpoints (e.g., get courses by instructor, get student  enrollments)  
+- Unified JSON response format using `ResponseStructure`  
+- Global exception handling with custom exception classes  
 
-Global exception handling with custom exceptions
+---
 
-📁 Project Structure (Key Folders)
-text
+## 📁 Project Structure
+
 src/main/java/com/jsp/CourseEnrollmentSystem/
 ├── controller/
 ├── service/
 ├── dao/
 ├── repository/
 ├── entity/
-├── dto/                // for ResponseStructure.java
+├── dto/                 // For ResponseStructure.java
 ├── exception/
 └── CourseEnrollmentSystemApplication.java
+
 src/main/resources/
-├── application.properties
+└── application.properties
+
+
 🛠️ Setup Instructions
 1. Prerequisites
-Java 21+
+  * Java 21+
+  * Maven
+  *PostgreSQL (running instance with a database)
 
-Maven
+2. Configure application.properties
 
-PostgreSQL (running instance + a database created)
-
-2. Configure Database in src/main/resources/application.properties
-text
-spring.datasource.url=jdbc:postgresql://localhost:8080/CourseEnrollmentSystem
+spring.datasource.url=jdbc:postgresql://localhost:5432/CourseEnrollmentSystem
 spring.datasource.username=YOUR_USERNAME
 spring.datasource.password=YOUR_PASSWORD
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
-3. Run Backend Server
-bash
-mvn spring-boot:run
-App will be live at: http://localhost:8080
 
-🗂️ API Endpoints
-Courses
+3. Run the Application
+   mvn spring-boot:run
+
+
+📂 API Endpoints
+📘 Courses
 GET /course — List all courses
 
 POST /course?instructorId= — Create a course
@@ -68,9 +82,9 @@ DELETE /course/{id} — Delete a course
 
 GET /course/instructor/{instructorId} — Courses by instructor
 
-GET /course/filtered?... — Paginated, sorted courses
+GET /course/filtered?... — Paginated and sorted courses
 
-Students
+👨‍🎓 Students
 GET /student — List all students
 
 POST /student — Create student
@@ -81,40 +95,35 @@ PUT /student/{id} — Update student
 
 DELETE /student/{id} — Delete student
 
-GET /student/{id}/courses — Courses enrolled by student
+GET /student/{id}/courses — Enrolled courses of a student
 
 GET /student/all?... — Paginated students
 
-Instructors, Enrollments
-Similar CRUD and relationship endpoints available; refer to controller code for details.
-
 🧪 API Testing
-This backend has been thoroughly tested using Postman.
+This backend is thoroughly tested using Postman.
 
-All endpoints validated through POSTMAN request collections.
+All endpoints are validated using Postman collection
 
-To test the API:
+Import and test using appropriate payloads
 
-Import endpoints into Postman (or use any REST client)
-
-Send requests as per the controller signatures
-
-Use appropriate JSON payloads in POST/PUT requests
-
-Example POST /student
-
+Example POST /student Payload:
 json
+Copy code
 {
   "name": "Alice Smith",
   "email": "alice@example.com",
   "dateofBirth": "1995-05-12",
   "percentage": 87.5
 }
-Example API Response
-
+Example API Response:
 json
+Copy code
 {
   "statusCode": 201,
-  "message": "Records saved Successfully",
-  "data": { ... }
+  "message": "Record saved successfully",
+  "data": {
+    // created object
+  }
 }
+
+
