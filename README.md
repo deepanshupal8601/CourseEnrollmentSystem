@@ -10,10 +10,7 @@ A robust Spring Boot REST API backend for managing **courses**, **instructors**,
 - Java 21  
 - Spring Boot 3.5.0  
 - PostgreSQL  
-- Maven  
-- Lombok (optional)  
 - Postman (for API testing)  
-
 ---
 
 ## ✅ Features
